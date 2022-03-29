@@ -11,7 +11,8 @@ const checkAuth = require('./middleware/auth');
 require('dotenv').config()
 const mongoose = require('mongoose');
 const { postVehicleData, getVehicleData, getVehicleByID, deleteVehicle, updateVehicle, userSignup, userLogin } = require('./controllers/controllers');
-mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.xsirj.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`)
+// mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.xsirj.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`)
+mongoose.connect ('mongodb+srv://mtunzi:MongoDBJune2022.@firstcluster21.ik5m1.mongodb.net/shop')
 
 mongoose.connection.on('error', err => {
     console.log('Connection Failed');
@@ -194,5 +195,6 @@ app.use((req, res, next) => {
         error: 'Bad Request',
     })
 })
+
 
 module.exports = app
