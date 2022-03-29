@@ -7,6 +7,7 @@ const swaggerUI = require('swagger-ui-express')
 const router = express.Router();
 const checkAuth = require('./middleware/auth');
 
+// const quoteRoutes = require('./routes/quotes');
 
 require('dotenv').config()
 const mongoose = require('mongoose');
@@ -196,5 +197,6 @@ app.use((req, res, next) => {
     })
 })
 
+// app.use('/quotes', quoteRoutes);
 
 module.exports = app

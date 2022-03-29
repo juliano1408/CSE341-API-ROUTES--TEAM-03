@@ -1,8 +1,10 @@
 const http = require('http');
 const app = require('./app');
+require('dotenv').config();
+
 const server = http.createServer(app);
+const PORT = process.env.PORT | 3000;
 
-require('dotenv').config()
-const port = 3000;
-
-server.listen(process.env.PORT || port);
+server.listen(PORT, () => {
+    console.info(`Transport API running on Port ${PORT}`);
+})

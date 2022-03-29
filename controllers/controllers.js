@@ -27,9 +27,13 @@ exports.postVehicleData = (req, res, next) => {
                 error: err
             })
         })
+
+    console.log("vehicle saved");
+
 }
 
 exports.getVehicleData = (req, res, next) => {
+    console.log("getting vehicles");
     Vehicle.find()
         .then(result => {
             res.status(200).json({
