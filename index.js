@@ -1,12 +1,12 @@
 const express = require('express')
 const app = express();
-const http = require('http');
+// const http = require('http');
 require('dotenv').config();
 
 const bodyParser = require('body-parser');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express')
-const router = express.Router();
+// const router = express.Router();
 const mongoose = require('mongoose');
 const apiRoutes = require('./routes/vehicleRoute');
 const authRoute = require('./routes/auth');
@@ -40,7 +40,8 @@ const options = {
         },
         servers: [
             {
-                url: 'http://localhost:3000/'
+                // url: 'http://localhost:3000/'
+                url: 'https://cse341-api-routes-team-03.herokuapp.com/'
             }
         ]
     },
@@ -53,7 +54,7 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 app.use(apiRoutes);
 app.use(authRoute);
-app.use(router)
+// app.use(router)
 
 app.use((req, res, next) => {
     res.status(404).json({
