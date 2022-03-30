@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express();
+// const vehicleRoute = require('./routes/__original__vehicleRoute');
 const vehicleRoute = require('./routes/vehicleRoute');
 const bodyParser = require('body-parser');
 const swaggerJsdoc = require('swagger-jsdoc');
@@ -44,6 +45,7 @@ const options = {
 const swaggerSpec = swaggerJsdoc(options);
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
+router.use(vehicleRoute);
 
 /**
 * @swagger
@@ -79,7 +81,7 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
 *              description: Added Successfully
 */
 
-router.post('/add/vehicle', checkAuth, postVehicleData)
+// router.post('/add/vehicle', checkAuth, postVehicleData)
 
 /**
 * @swagger
@@ -99,7 +101,7 @@ router.post('/add/vehicle', checkAuth, postVehicleData)
 */
 
 
-router.get('/get/vehicle', checkAuth, getVehicleData)
+// router.get('/get/vehicle', checkAuth, getVehicleData)
 
 /**
 * @swagger
@@ -124,7 +126,7 @@ router.get('/get/vehicle', checkAuth, getVehicleData)
 *                          items:
 *                              $ref: '#components/schemas/Vehicle'
 */
-router.get('/get/vehicle/:id', checkAuth, getVehicleByID);
+// router.get('/get/vehicle/:id', checkAuth, getVehicleByID);
 
 
 /**
@@ -150,7 +152,7 @@ router.get('/get/vehicle/:id', checkAuth, getVehicleByID);
 *                          items:
 *                              $ref: '#components/schemas/Vehicle'
 */
-router.get('/delete/vehicle/:_id', checkAuth, deleteVehicle);
+// router.get('/delete/vehicle/:_id', checkAuth, deleteVehicle);
 
 
 /**
@@ -182,7 +184,7 @@ router.get('/delete/vehicle/:_id', checkAuth, deleteVehicle);
 *                          items:
 *                              $ref: '#components/schemas/Vehicle'
 */
-router.put('/update/vehicle/:_id', checkAuth, updateVehicle);
+// router.put('/update/vehicle/:_id', checkAuth, updateVehicle);
 
 router.post('/userSignup', userSignup)
 router.post('/userLogin', userLogin)
