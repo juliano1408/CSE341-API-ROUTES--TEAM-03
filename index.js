@@ -7,14 +7,12 @@ const server = http.createServer(app);
 require('dotenv').config()
 
 
-// const vehicleRoute = require('./routes/__original__vehicleRoute');
 const vehicleRoutes = require('./routes/vehicleRoute');
 const authRoutes = require('./routes/auth');
 const bodyParser = require('body-parser');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express')
 const router = express.Router();
-// const checkAuth = require('./middleware/auth');
 
 const PORT = process.env.PORT || 3000;
 const DB_NAME = process.env.DB_NAME;
@@ -24,7 +22,6 @@ const SWAGGER_URL = PORT == 3000 ? 'http://localhost:3000/' : 'https://cse341-ap
 
 require('dotenv').config()
 const mongoose = require('mongoose');
-// const { postVehicleData, getVehicleData, getVehicleByID, deleteVehicle, updateVehicle, userSignup, userLogin } = require('./controllers/controllers');
 mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.xsirj.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`)
 
 mongoose.connection.on('error', err => {
@@ -48,9 +45,6 @@ const options = {
         },
         servers: [
             {
-                
-                // url: 'http://localhost:3000/'
-                // url: 'https://cse341-api-routes-team-03.herokuapp.com/'
                 url: SWAGGER_URL
             }
         ]
@@ -72,4 +66,6 @@ app.use((req, res, next) => {
     })
 })
 
-server.listen(PORT);
+server.listen(PORT, () => {
+    console.info(`Transport API running on Port ${PORT}`);
+})
