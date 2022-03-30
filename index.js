@@ -5,7 +5,6 @@ const http = require('http');
 const server = http.createServer(app);
 
 require('dotenv').config()
-const port = 3000;
 
 
 // const vehicleRoute = require('./routes/__original__vehicleRoute');
@@ -17,11 +16,15 @@ const swaggerUI = require('swagger-ui-express')
 const router = express.Router();
 // const checkAuth = require('./middleware/auth');
 
+const PORT = process.env.PORT | 3000;
+const DB_NAME = process.env.DB_NAME;
+const DB_USER = process.env.DB_USER;
+const DB_PASS = process.env.DB_PASS;
 
 require('dotenv').config()
 const mongoose = require('mongoose');
 // const { postVehicleData, getVehicleData, getVehicleByID, deleteVehicle, updateVehicle, userSignup, userLogin } = require('./controllers/controllers');
-mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.xsirj.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.xsirj.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`)
 
 mongoose.connection.on('error', err => {
     console.log('Connection Failed');
@@ -72,4 +75,4 @@ app.use((req, res, next) => {
 
 
 
-server.listen(process.env.PORT || port);
+server.listen(process.env.PORT || PORT);
