@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express();
+const http = require('http');
+const server = http.createServer(app);
 // const http = require('http');
 require('dotenv').config();
 
@@ -61,6 +63,6 @@ app.use((req, res, next) => {
 })
 
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.info(`Transport API running on Port ${PORT}`);
 })
