@@ -73,10 +73,4 @@ app.use((req, res, next) => {
     })
 })
 
-
-
-// server.listen(PORT, () => {
-//     console.info(`Transport API Up and Running`);
-// })
-
-server.listen(PORT).then(console.log("Transport API Up and Running"));
+server.listen(PORT);
