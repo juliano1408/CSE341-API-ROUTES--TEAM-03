@@ -40,12 +40,12 @@ const options = {
         },
         servers: [
             {
-                url: 'http://localhost:3000/'
-                // url: 'https://cse341-api-routes-team-03.herokuapp.com/'
+                // url: 'http://localhost:3000/'
+                url: 'https://cse341-api-routes-team-03.herokuapp.com/'
             }
         ]
     },
-    apis: ['./routes/*.js']
+    apis: ['./index.js', './routes/*.js']
 }
 
 const swaggerSpec = swaggerJsdoc(options);
