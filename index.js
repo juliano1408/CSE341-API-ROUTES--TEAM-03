@@ -48,9 +48,8 @@ const options = {
     apis: ['./index.js', './routes/*.js']
 }
 
-const swaggerSpec = swaggerJsdoc(options);
-
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+// const swaggerSpec = swaggerJsdoc(options);
+// app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 app.use(apiRoutes);
 app.use(authRoute);
