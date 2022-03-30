@@ -2,7 +2,7 @@
 const express = require('express')
 const app = express();
 const http = require('http');
-const server = http.createServer(app);
+
 require('dotenv').config()
 const vehicleRoutes = require('./routes/vehicleRoute');
 const authRoutes = require('./routes/auth');
@@ -61,7 +61,7 @@ app.use((req, res, next) => {
         error: 'Bad Request',
     })
 })
-
+const server = http.createServer(app);
 server.listen(PORT, () => {
     console.info(`Transport API running on Port ${PORT}`);
 })
