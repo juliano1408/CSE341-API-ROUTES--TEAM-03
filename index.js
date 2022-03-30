@@ -54,7 +54,6 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 app.use(apiRoutes);
 app.use(authRoute);
-// app.use(router)
 
 app.use((req, res, next) => {
     res.status(404).json({
