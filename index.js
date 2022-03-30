@@ -9,7 +9,8 @@ const port = 3000;
 
 
 // const vehicleRoute = require('./routes/__original__vehicleRoute');
-const vehicleRoute = require('./routes/vehicleRoute');
+const vehicleRoutes = require('./routes/vehicleRoute');
+const authRoutes = require('./routes/auth');
 const bodyParser = require('body-parser');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express')
@@ -55,7 +56,9 @@ const options = {
 const swaggerSpec = swaggerJsdoc(options);
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
-router.use(vehicleRoute);
+router.use(vehicleRoutes);
+router.use(authRoutes);
+
 // router.post('/userSignup', userSignup)
 // router.post('/userLogin', userLogin)
 
