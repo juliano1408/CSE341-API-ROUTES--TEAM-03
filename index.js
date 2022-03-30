@@ -17,8 +17,8 @@ const PORT = process.env.PORT | 3000;
 const DB_NAME = process.env.DB_NAME;
 const DB_USER = process.env.DB_USER;
 const DB_PASS = process.env.DB_PASS;
-const SWAGGER_URL = PORT == 3000 ? 'http://localhost:3000/' : 'https://cse341-api-routes-team-03.herokuapp.com/';
-console.log('swagger url:  ' + SWAGGER_URL);
+// const SWAGGER_URL = PORT == 3000 ? 'http://localhost:3000/' : 'https://cse341-api-routes-team-03.herokuapp.com/';
+// console.log('swagger url:  ' + SWAGGER_URL);
 
 require('dotenv').config()
 const mongoose = require('mongoose');
@@ -46,7 +46,7 @@ const options = {
         servers: [
             {
                 // url: 'http://localhost:3000/'
-                url: SWAGGER_URL
+                url: 'https://cse341-api-routes-team-03.herokuapp.com/'
             }
         ]
     },
