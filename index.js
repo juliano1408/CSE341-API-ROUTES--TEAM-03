@@ -75,4 +75,6 @@ app.use((req, res, next) => {
 
 
 
-server.listen(process.env.PORT || PORT);
+server.listen(PORT, () => {
+    console.info(`Transport API running on Port ${PORT}`);
+})
