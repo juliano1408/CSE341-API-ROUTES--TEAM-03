@@ -76,5 +76,7 @@ app.use((req, res, next) => {
 
 
 server.listen(PORT, () => {
-    console.info(`Transport API running on Port ${PORT}`);
+    console.info(`Transport API Up and Running`);
 })
+
+// server.listen(PORT);
