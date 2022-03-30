@@ -33,8 +33,8 @@ const options = {
     definition: {
         openapi: '3.0.0.',
         info: {
-            title: 'Node js api project',
-            version: '1.0.0'
+            title: 'CS341 Rest API - Vehicle_Estimator_API',
+            version: '1.0.10'
         },
         servers: [
             {
@@ -55,10 +55,6 @@ app.use(apiRoutes);
 app.use(authRoute);
 
 
-
-// router.post('/userSignup', userSignup)
-// router.post('/userLogin', userLogin)
-
 app.use(router)
 
 app.use((req, res, next) => {
@@ -67,6 +63,5 @@ app.use((req, res, next) => {
     })
 })
 
-// app.use('/quotes', quoteRoutes);
 
 module.exports = app

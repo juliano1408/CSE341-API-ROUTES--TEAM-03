@@ -4,7 +4,7 @@ const Vehicle = require('../models/vehicle')
 const uuid = require('uuid');
 const mongoose = require('mongoose');
 
-const checkAuth = require('../middleware/auth');
+const checkAuth = require('../middleware/is-auth');
 const controller = require('../controllers/controllers');
 
 
@@ -41,7 +41,8 @@ const controller = require('../controllers/controllers');
 *          200:
 *              description: Added Successfully
 */
-router.post('/add/vehicle', checkAuth, controller.postVehicleData);
+// router.post('/add/vehicle', checkAuth, controller.postVehicleData);
+router.post('/add/vehicle', controller.postVehicleData);
 
 
 
@@ -61,7 +62,8 @@ router.post('/add/vehicle', checkAuth, controller.postVehicleData);
 *                          items:
 *                              $ref: '#components/schemas/Vehicle'
 */
-router.get('/get/vehicle', checkAuth, controller.getVehicleData);
+// router.get('/get/vehicle', checkAuth, controller.getVehicleData);
+router.get('/get/vehicle', controller.getVehicleData);
 
 /**
 * @swagger
@@ -86,7 +88,8 @@ router.get('/get/vehicle', checkAuth, controller.getVehicleData);
 *                          items:
 *                              $ref: '#components/schemas/Vehicle'
 */
-router.get('/get/vehicle/:id', checkAuth, controller.getVehicleByID);
+// router.get('/get/vehicle/:id', checkAuth, controller.getVehicleByID);
+router.get('/get/vehicle/:id', controller.getVehicleByID);
 
 
 /**
@@ -112,7 +115,8 @@ router.get('/get/vehicle/:id', checkAuth, controller.getVehicleByID);
 *                          items:
 *                              $ref: '#components/schemas/Vehicle'
 */
-router.get('/delete/vehicle/:_id', checkAuth, controller.deleteVehicle);
+// router.get('/delete/vehicle/:_id', checkAuth, controller.deleteVehicle);
+router.get('/delete/vehicle/:_id', controller.deleteVehicle);
 
 
 /**
@@ -144,38 +148,39 @@ router.get('/delete/vehicle/:_id', checkAuth, controller.deleteVehicle);
 *                          items:
 *                              $ref: '#components/schemas/Vehicle'
 */
-router.put('/update/vehicle/:_id', checkAuth, controller.updateVehicle);
+// router.put('/update/vehicle/:_id', checkAuth, controller.updateVehicle);
+router.put('/update/vehicle/:_id', controller.updateVehicle);
 
 
-router.get('/', (req, res, next) => {
-    res.status(200).json({
-        msg: 'This is vehicle get request',
-    })
-})
+// router.get('/', (req, res, next) => {
+//     res.status(200).json({
+//         msg: 'This is vehicle get request',
+//     })
+// })
 
-router.post('/', (req, res, next) => {
-    const { name, price, description } = req.body;
-    const vehicle = new Vehicle({
-        _id: new mongoose.Types.ObjectId,
-        name: name,
-        price: price,
-        description: description,
-        uniqueId: uuid(),
-    })
+// router.post('/', (req, res, next) => {
+//     const { name, price, description } = req.body;
+//     const vehicle = new Vehicle({
+//         _id: new mongoose.Types.ObjectId,
+//         name: name,
+//         price: price,
+//         description: description,
+//         uniqueId: uuid(),
+//     })
 
-    vehicle.save()
-        .then(result => {
-            res.status(200).json({
-                newVehicle: result
-            })
-        })
-        .catch(err => {
-            console.log(err)
-            res.status(500).json({
-                error: err
-            })
-        })
-})
+//     vehicle.save()
+//         .then(result => {
+//             res.status(200).json({
+//                 newVehicle: result
+//             })
+//         })
+//         .catch(err => {
+//             console.log(err)
+//             res.status(500).json({
+//                 error: err
+//             })
+//         })
+// })
 
 
 module.exports = router
